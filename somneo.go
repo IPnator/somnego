@@ -25,7 +25,6 @@ func getData[T any](somneo *Somneo, endpoint string) (T, error) {
 	if err != nil {
 		return result, err
 	}
-	fmt.Printf("Data of type %T: %v\n", result, result)
 	return result, nil
 }
 
