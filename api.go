@@ -3,6 +3,7 @@ package somnego
 import (
 	"bytes"
 	"crypto/tls"
+	"encoding/json"
 	"io"
 	"net/http"
 )
@@ -41,4 +42,12 @@ func SendRequest(url string, method string, payload *[]byte) ([]byte, error) {
 
 func GET(url string) ([]byte, error) {
 	return SendRequest(url, http.MethodGet, nil)
+}
+
+func PUT[T any](url string, payload T) ([]byte, error) {
+	data, err := json.Marshal(payload)
+	if err != nil {
+		return []byte{}, err
+	}
+	return SendRequest(url, http.MethodPut, &data)
 }

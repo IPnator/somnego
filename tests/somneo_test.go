@@ -61,7 +61,7 @@ func TestGetLightThemes(t *testing.T) {
 	}
 }
 
-func TestDuskGetLightThemes(t *testing.T) {
+func TestGetDuskLightThemes(t *testing.T) {
 	data, err := device.GetDuskLightThemes()
 	if err != nil {
 		t.Error("Loading light themes failed: ", err)
@@ -77,5 +77,55 @@ func TestDuskGetLightThemes(t *testing.T) {
 }
 
 func TestGetSensorData(t *testing.T) {
-	device.GetSensorData()
+	_, err := device.GetSensorData()
+	if err != nil {
+		t.Error("Loading sensor data failed: ", err)
+	}
+}
+
+func TestTurnMainLightOn(t *testing.T) {
+	err := device.TurnMainLightOn()
+	if err != nil {
+		t.Error("Turning main light on failed: ", err)
+	}
+}
+
+func TestTurnMainLightOff(t *testing.T) {
+	err := device.TurnMainLightOff()
+	if err != nil {
+		t.Error("Turning main light on failed: ", err)
+	}
+}
+
+func TestSetMainLightLevel(t *testing.T) {
+	err := device.SetMainLightLevel(100)
+	err = device.SetMainLightLevel(0)
+	err = device.SetMainLightLevel(100)
+	err = device.SetMainLightLevel(1078)
+	err = device.SetMainLightLevel(-10)
+
+	if err != nil {
+		t.Error("Setting main light failed: ", err)
+	}
+}
+
+func TestTurnNightLightOn(t *testing.T) {
+	err := device.TurnNightlightOn()
+	if err != nil {
+		t.Error("Turning night light on failed: ", err)
+	}
+}
+
+func TestTurnNightLightOff(t *testing.T) {
+	err := device.TurnNightlightOff()
+	if err != nil {
+		t.Error("Turning night light off failed: ", err)
+	}
+}
+
+func TestTurnOffAllLights(t *testing.T) {
+	err := device.TurnOffAllLights()
+	if err != nil {
+		t.Error("Turning all lights off failed: ", err)
+	}
 }

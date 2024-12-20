@@ -51,7 +51,7 @@ type WakeUpStatus struct {
 	SunsetTime   int  `json:"sntim"`
 }
 
-type WakeUpLightStatus struct {
+type LightStatus struct {
 	LightLevel   int   `json:"ltlvl"`
 	IsOn         bool  `json:"onoff"`
 	Temperature  bool  `json:"tempy"`
